@@ -2,26 +2,25 @@ from array import array
 import random
 
 
-def generate_test_data():
+def generate_random_array():
     size = random.randint(10, 50)
     data = list((range(size)))
     random.shuffle(data)
     return array('i', data)
 
 
-def insert_sort(arr):
+def insertion_sort(arr):
     for i, el in enumerate(arr):
-        j = i - 1
-        while j > -1 and arr[j] > el:
-            arr[j+1] = arr[j]
-            arr[j] = el #TODO: Optimazation needed. This code should operate one time per one loop.
-            j -= 1
+        while i > 0 and arr[i-1] > el:
+            arr[i] = arr[i-1]
+            i -= 1
+        arr[i] = el #TODO: Optimazation needed. This code should operate one time per one loop.
     return arr
 
 
 def test_insert_sort():
-    arr = generate_test_data()
-    result = insert_sort(arr)
+    arr = generate_random_array()
+    result = insertion_sort(arr)
     if result.tolist() != sorted(arr):
         raise AssertionError("%s\n%s" % (result.tolist(), sorted(arr)))
     print("Success")
