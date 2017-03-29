@@ -10,13 +10,11 @@ def generate_test_data():
 
 
 def insert_sort(arr):
-    n = len(arr)
     for i, el in enumerate(arr):
-        key = el
         j = i - 1
-        while j > -1 and arr[j] > key:
+        while j > -1 and arr[j] > el:
             arr[j+1] = arr[j]
-            arr[j] = key
+            arr[j] = el #TODO: Optimazation needed. This code should operate one time per one loop.
             j -= 1
     return arr
 
